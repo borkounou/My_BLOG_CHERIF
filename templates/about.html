@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{%block title%} About {%endblock%}
+
+{%block content%}
+
+<header class="intro-header" style="background-image: url({{url_for('static', path='img/about-bg.jpg')}})">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="page-heading">
+                    <h1>About Me</h1>
+                    <hr class="small">
+                    <span class="subheading">This is what I do.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+   
+    <!-- <header class="intro-header" style="background-image: url('{{ url_for('static', path='img/about-bg.jpg') }}')"> -->
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-sm-8 col-md-8 col-8">
+                    <p class="sentences-about">I am an avid software and AI engineer, driven by a deep passion for coding and a profound love for literature. From an early age, I discovered the captivating world of technology and embarked on a journey to explore its limitless possibilities.</p>
+                   
+                    <p class="sentences-about">My name is Nousradine Cherif Hassan, and I have dedicated my life to mastering the art of software development. I find immense joy in crafting elegant code and building innovative solutions that push the boundaries of what is possible. With a strong foundation in various programming languages, including Python, C++, and Java, I thrive in the realm of software engineering.</p>
+                    <p class="sentences-about">In addition to my expertise in software development, I possess a profound interest in front-end development. By harnessing the power of HTML, CSS, and JavaScript, I bring life to captivating user interfaces and create seamless, intuitive experiences for users. The ability to blend aesthetics with functionality has always been a fascinating aspect of my work.</p>
+                    
+                    <p class="sentences-about">Driven by an insatiable curiosity, I am particularly captivated by the domains of machine learning, deep learning, and natural language processing (NLP). Exploring the algorithms and techniques that enable computers to learn and understand human language has become a cornerstone of my career. I am constantly seeking ways to leverage these technologies to solve complex problems and improve user experiences.</p>
+                    <p class="sentences-about">When it comes to back-end development, I am well-versed in working with powerful frameworks like Django and Flask. These frameworks enable me to create robust, scalable, and secure applications that form the backbone of a seamless user experience. I am deeply committed to delivering reliable and efficient solutions, ensuring that every aspect of the software ecosystem operates harmoniously.</p>
+                <div id="collapsible-paragraphs" style="display: none;">
+                    <p class="sentences-about">To stay at the forefront of the ever-evolving field of AI, I utilize cutting-edge platforms like PyTorch to train and deploy deep learning models. By harnessing the power of PyTorch, I can unravel intricate patterns in data, enabling machines to make accurate predictions and decisions. I thrive on the challenge of developing intelligent systems that can understand and interpret complex information.</p>
+                    <p class="sentences-about">Beyond my technical pursuits, I am an avid reader who finds solace in the pages of literature. I believe that books offer a profound insight into the human experience and fuel my creativity and critical thinking. They provide a rich tapestry of ideas and perspectives that inspire me in both my personal and professional life.</p>
+                    <p class="sentences-about">With an unwavering passion for software engineering, a diverse skill set encompassing multiple programming languages and frameworks, and an insatiable curiosity for the latest advancements in AI, I am dedicated to pushing the boundaries of innovation. I strive to create technological marvels that have a positive impact on the world and empower individuals and businesses to achieve their goals.</p>
+                    <p class="sentences-about">Through my relentless pursuit of knowledge and my commitment to excellence, I aim to leave a lasting mark on the world of software and AI, shaping the future through my passion, expertise, and unwavering dedication.</p>
+                </div>
+                <button class="btn btn-primary" id="collapse-button" onclick="toggleCollapsibleParagraphs()">Read more</button>
+                </div>
+
+                <div class="col-sm-4 col-md-4 col-4">
+                    <h2 class="post-title post-header">
+                        Education/Formation
+                    </h2>
+        
+                    <div class="row-md-4">
+                   
+                        <div class="thumbnail">
+                          <a href="https://univ-avignon.fr/" target="_blank" rel="noopener noreferrer">
+                            <img src="{{url_for('static', path='img/avignon_university_logo.jpeg')}}" alt="Lights" >
+                            <div class="caption">
+                              <p><span>Master of computer science-Artificial intelligence</span> <span><a href="https://univ-avignon.fr/" target="_blank" rel="noopener noreferrer">Avignon University, Avignon France</a></span></p>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="row-md-4">
+                        <div class="thumbnail">
+                          <a href="https://www.christuniversity.in/" target="_blank" rel="noopener noreferrer">
+                            <img src="{{url_for('static', path='img/christ_university_logo.jpg')}}" alt="Nature">
+                            <div class="caption">
+                              <p><span>Bsc in Computer Science Mathematics and Electronics(CME)</span> <span><a href="https://www.christuniversity.in/" target="_blank" rel="noopener noreferrer"> Christ University, Bangalore, India</a></span> </p>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="row-md-4">
+                        <div class="thumbnail">
+                          <a href="{{url_for('static', path='img/college_evangelique.JPG')}}" target="_blank" rel="noopener noreferrer">
+                            <img src="{{url_for('static', path='img/college_evangelique.JPG')}}" alt="Fjords">
+                            <div class="caption">
+                              <p><span>Baccalaureate of Mathematics physics and Chemistry</span> <span>Evangelical High School, Ndjamena, Chad</span></p>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+
+                </div> 
+
+    
+
+            </div>
+
+        </div>
+  
+
+    <!-- Main Content -->
+
+
+    <hr>
+
+    {%endblock%}
+

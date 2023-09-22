@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{%block title%} Single post {%endblock%}
+
+{%block content%}
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url({{url_for('static', path='img/post-bg.jpg')}})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>{{post.title}}</h1>
+                        <h2 class="subheading">{{post.subtitle}}</h2>
+                        <span class="meta">Posted by <a href="#">{{post.author}}</a>{{post.author}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h2 class="section-heading">{{post.title}}</h2>
+                <br>
+                <br>
+                
+                <a href="#">
+                    <img class="img-responsive" src="{{url_for('static', path='img/post-sample-image.jpg')}}" alt="">
+                </a>
+                <span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
+                
+                <p>{{post.contents}}</p>
+                </div>
+                <hr>
+                
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+
+    {%endblock%}
+

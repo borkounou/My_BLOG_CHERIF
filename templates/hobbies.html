@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{%block title%} Hobbies {%endblock%}
+
+{%block content%}
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url({{url_for('static', filename='img/contact-bg.jpg')}})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                        <h1>My Hobbies</h1>
+                        <hr class="small">
+                        <span class="subheading">Do you want to know about me more ? Don't hesitate to check here!!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col col-md-4">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{{url_for('static', filename='img/contact-bg.jpg')}}" alt="Card Image Cap" width="90%" height="300">
+                    <div class="card-body">
+                        <h5 class="card-title">Travel</h5>
+                        <p class="card-text">
+                            Never in all their history have men been able truly to conceive of the world as one:
+                            a single sphere, a globe, having the qualities of a globe, a round earth in which all 
+                            the directions eventually meet, in which there is no center because every point, or none, 
+                            is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it,
+                            will be truly round: a globe in practice, not in theory. Science cuts two ways, of course; 
+                            its products can be used for both good and evil.
+                        </p>
+
+                        <a href="#" class="btn btn-primary">Read more</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{url_for('static', filename='img/contact-bg.jpg')}}" alt="Card Image Cap" width="90%" height="300">
+                    <div class="card-body">
+                        <h5 class="card-title">Travel</h5>
+                        <p class="card-text">
+                            Never in all their history have men been able truly to conceive of the world as one:
+                            a single sphere, a globe, having the qualities of a globe, a round earth in which all 
+                            the directions eventually meet, in which there is no center because every point, or none, 
+                            is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it,
+                            will be truly round: a globe in practice, not in theory. Science cuts two ways, of course; 
+                            its products can be used for both good and evil.
+                        </p>
+
+                        <a href="#" class="btn btn-primary">Read more</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{url_for('static', filename='img/contact-bg.jpg')}}" alt="Card Image Cap" width="90%" height="300">
+                    <div class="card-body">
+                        <h5 class="card-title">Travel</h5>
+                        <p class="card-text">
+                            Never in all their history have men been able truly to conceive of the world as one:
+                            a single sphere, a globe, having the qualities of a globe, a round earth in which all 
+                            the directions eventually meet, in which there is no center because every point, or none, 
+                            is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it,
+                            will be truly round: a globe in practice, not in theory. Science cuts two ways, of course; 
+                            its products can be used for both good and evil.
+                        </p>
+
+                        <a href="#" class="btn btn-primary">Read more</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        
+
+        </div>
+
+    </div>
+
+
+
+
+    {%endblock%}

@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{%block title%} Home {%endblock%}
+
+{%block content%}
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('static/img/home-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>Nousradine Cherif Hassan</h1>
+                        <hr class="small">
+                        <span class="subheading">Software and AI engineer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12-small col-6 col-6-medium col-lg-6 col">
+                <h1 class="post-title">Popular Projects</h1>
+                <hr>
+                <div class="post-preview">
+                    {%for post in posts%}
+                    <a href="{{url_for('single', id=post.id)}}">
+                        <h2 class="post-title">
+                            {{post.title}}
+                            <!-- Man must explore, and this is exploration at its greatest -->
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{post.subtitle}}
+                            <!-- Problems look mighty small from 150 miles up -->
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by <a href="#">{{post.author}}</a>None</p>
+                    <hr>
+
+                    {%endfor%}
+
+                </div>
+            </div>
+
+            <div class="col-12-small col-6 col-6-medium col-lg-6 col">
+                <h1 class="post-title">Newest Projects</h1>
+                <hr>
+                <div class="row-md-4 row-12">
+                <div class="thumbnail">
+                    <a href="https://univ-avignon.fr/" target="_blank" rel="noopener noreferrer">
+                      <img src="{{url_for('static', path='img/avignon_university_logo.jpeg')}}" alt="Lights" >
+                      <div class="caption">
+                        <p><span>Master of computer science-Artificial intelligence</span> <span><a href="https://univ-avignon.fr/" target="_blank" rel="noopener noreferrer">Avignon University, Avignon France</a></span></p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="row-md-4 row-12">
+                  <div class="thumbnail">
+                    <a href="https://www.christuniversity.in/" target="_blank" rel="noopener noreferrer">
+                      <img src="{{url_for('static', path='img/christ_university_logo.jpg')}}" alt="Nature">
+                      <div class="caption">
+                        <p><span>Bsc in Computer Science Mathematics and Electronics(CME)</span> <span><a href="https://www.christuniversity.in/" target="_blank" rel="noopener noreferrer"> Christ University, Bangalore, India</a></span> </p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="row-md-4 row-12">
+                  <div class="thumbnail">
+                    <a href="{{url_for('static', path='img/college_evangelique.JPG')}}" target="_blank" rel="noopener noreferrer">
+                      <img src="{{url_for('static', path='img/college_evangelique.JPG')}}" alt="Fjords">
+                      <div class="caption">
+                        <p><span>Baccalaureate of Mathematics physics and Chemistry</span> <span>Evangelical High School, Ndjamena, Chad</span></p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+            </div> 
+
+        </div>
+
+  
+        <div class="row">
+          <div class="col-12">
+            <h1 class="post-title">Articles</h1>
+
+            <p>Here is the main articles to read and I am happy of doing it </p>
+
+          </div>
+
+        </div>
+
+        
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+{%endblock%}

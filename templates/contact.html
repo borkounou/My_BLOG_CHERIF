@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{%block title%} Cobtact {%endblock%}
+
+{%block content%}
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url({{url_for('static', path='img/contact-bg.jpg')}})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                        <h1>Contact Me</h1>
+                        <hr class="small">
+                        <span class="subheading">Have questions? I have answers (maybe).</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+       <label for="">Email:</label> <span class="d-block p-2 bg-dark text-white">nousradinecherifhassane@gmail.com</span> <br>
+       <label for="">number:</label><span class="d-block p-2 bg-dark text-white">0033774932394</span>
+    </div>
+
+
+    {%endblock%}
