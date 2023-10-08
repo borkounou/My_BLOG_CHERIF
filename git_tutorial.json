@@ -1,0 +1,19 @@
+{
+    "name": "Tutorial",
+    "git": {
+        "Objectives":{
+                "line1": "By the conclusion of this course, students will have achieved the following objectives:",
+                "line2":"Grasp the basics of version control systems (VCS).",
+                "line3": "Understand Git as a distributed VCS, including its core concepts.",
+                "line4":" Work confidently with Git for practical development tasks."
+            },
+        "tableOfcontent":[
+            "Version Control system", "Introduction", "local Git "
+        ]
+
+
+
+        
+
+    }
+}

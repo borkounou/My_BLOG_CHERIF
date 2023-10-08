@@ -30,4 +30,15 @@ p{
   border: #0085A1 solid 1px;
   padding: 40px;
  }
+
+ .cv-headers{
+  color: #0085A1;
+  margin-bottom: 16px;
+
+ }
+
+ .myName{
+  color: #0085A1;
+  margin-bottom: 16px;
+ }
  
