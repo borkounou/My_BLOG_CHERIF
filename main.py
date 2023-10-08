@@ -64,6 +64,9 @@ async def tutorial(request:Request):
 async def tutorial(request:Request):
     return templates.TemplateResponse("side_bar.html",{"request":request})
 
+@app.get("/myCV")
+async def cv(request:Request):
+    return templates.TemplateResponse("cv.html",{"request":request})
 
 @app.get("/post/{id}",response_class=HTMLResponse)
 async def single(id:str, request:Request):
