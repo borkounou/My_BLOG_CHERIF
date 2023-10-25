@@ -23,6 +23,380 @@
             </div>
         </div>
 
+        <div class="accordion-item">
+            <h1 class="accordion-header" id="heading-2">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#dataPreparation" aria-expanded="true" aria-controls="dataPreparation" style="background-color:#7C81AD;">
+                    Data preparation with Python: A step–by-step Guide:
+                </button>
+            </h1>
+            <div id="dataPreparation" class="accordion-collapse collapse show" aria-labelledby="heading-2" data-bs-parent="#frenchSentimentAnalysis">
+                <div class="accordion-body">
+                    <p>Data preparation is a critical step in any data analysis or machine learning project. In this article, we will walk you through a python code snippet that demonstrates how to preprocess data from a csv file, specifically text data, using the pandas and numpy libraries. The goal is to clean and organize the data for further analysis or machine learning tasks.</p>  
+                    <h3>Step 1: Importing Libraries</h3>
+                    <pre>
+<code class="language-python">
+import pandas as pd
+import numpy as np
+</code>
+                    </pre>
+
+                    <p>The code begins by importing two essential libraries: pandas and numpy. Pandas is used for data manipulation and analysis, while numpy is used for numerical operations on data arrays.</p>
+                    <h3>Step 2: Defining a Data Preprocessing Function</h3>
+                    <pre>
+<code class="language-python">
+def data_preprocess(path: str):
+</code>
+                    </pre>
+
+
+
+                    <p>A function named data_preprocess is defined to encapsulate the data preparation steps. It takes a single argument, ‘path’ which should be a string representing the path to a CSV file containing data to be processed.</p>
+                    <h3>Step 3: Reading Data from CSV</h3>
+                    <pre>
+<code class="language-python">
+raw_data = pd.read_csv(path, encoding="utf-8")
+</code>
+                    </pre>
+
+                    <p>The first data processing step involves reading the data from the specified CSV file. The ‘pd.read_csv’ function from ‘pandas’ is used for this purpose. It reads the data and assumes that the CSV file is encoded in UTF-8.</p>
+                        
+                    <h3>Step 4: Selecting Relevant Columns</h3>
+                    <pre>
+<code class="language-python">
+data = raw_data[["review", "polarity"]]
+</code>
+                    </pre>
+                    <p>In this step, we select only the relevant columns from the raw data. 
+                        Specifically, we choose the “review” column, which contains textual data and the “polarity” column, which represents labels or sentiment scores associated with the text. 
+                        </p>
+
+                <h3>Data cleaning</h3>
+                <pre>
+<code class="language-python">
+data = data.dropna()
+</code>
+                </pre>
+                <p>Data cleaning is an essential part of data preprocessing. The line of code removes rows with missing values (NaN) from the ‘data’ DataFrame. Cleaning the data ensures that it’s free from incomplete or unreliable information. </p>
+
+                <h3>Step 6: Splitting Data into Features and Labels</h3>
+
+
+                <pre>
+<code class="language-python">
+X = np.array(data['review'])
+y = np.array(data['polarity'])
+</code>
+                </pre>
+
+                <p>After cleaning the data, we proceed to split it into input features (X) and target labels(y). The “review” column becomes our input features, and the “polarity” column becomes our target label. These are converted into numpy array, which are more suitable for further processing. </p>
+               
+            <h3>Step 7: Returning processed Data</h3>
+            <pre>
+<code class="language-python">
+return X, y
+</code>
+            </pre>
+
+            <p>Finally, the data_preprocess function returns the processed data as a tuple: X, which contains the textual reviews, and y, which contains the corresponding polarity labels. This preprocessed data is now ready for analysis, machine learning, or any other tasks you have in mind.</p>
+           
+        
+            <p>In summary, this Python code snippet demonstrates a basic yet crucial data preparation process for text data. It covers data loading, column selection, cleaning, and data splitting, setting the stage for various data analysis or machine learning applications.</p>
+        
+        
+            <strong>Here is the complete code for data processing</strong>
+<pre>
+<code class="language-python">
+import pandas as pd
+import numpy as np 
+
+def data_preprocess(path:str):
+        raw_data = pd.read_csv(path,encoding="utf-8")
+        data = raw_data[["review", "polarity"]]
+        data = data.dropna()
+        # data = data.sample(frac=0.01)
+
+        X = np.array(data['review'])
+        y = np.array(data['polarity'])
+
+        return X,y
+
+</code>
+</pre>
+
+
+        </div>
+
+            </div>
+        </div>
+
+
+        <div class="accordion-item">
+            <h1 class="accordion-header" id="heading-3">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#tokenization" aria-expanded="true" aria-controls="introduction" style="background-color:#7C81AD;">
+                    Tokenization for Natural Language Processing with Camembert
+                </button>
+            </h1>
+            <div id="tokenization" class="accordion-collapse collapse show" aria-labelledby="heading-3" data-bs-parent="#frenchSentimentAnalysis">
+                <div class="accordion-body">
+                    <h3>Introduction</h3>
+                    <p>Tokenization is the process of converting raw text data into a format suitable for natural language processing (NLP) tasks. In this article, we explore a Python code snippet that demonstrates how to tokenize text data using the Camembert model from the Hugging Face Transformers library. This essential step is the foundation for a wide range of NLP tasks, from sentiment analysis to text generation.</p>
+                    
+                    <h3>Code Explanation</h3>
+                    <pre>
+<code class="language-python">
+from transformers import CamembertTokenizer
+import torch 
+from config import PRETRAINED_MODEL_PATH
+</code>
+                    </pre>
+                    <p>The code begins by importing the necessary libraries and dependencies, including the CamembertTokenizer, PyTorch, and a custom configuration file (config.py) that specifies the path to the pre-trained model.</p>
+                    <h3>Function: tokenization(data, max_length)</h3>
+<pre>
+<code class="language-python">
+def tokenization(data, max_length):
+        print("Starting tokenization...")
+
+        tokenizer = CamembertTokenizer.from_pretrained(PRETRAINED_MODEL_PATH)
+        input_ids = []
+        attention_mask = []
+    </code>
+</pre>
+
+<p>This function tokenizes a list of text data (data) and has a parameter max_length that defines the maximum token length for the output. Inside the function, it initializes a Camembert tokenizer and empty lists to store the tokenized data.</p>
+     <pre>
+<code class="language-python">
+# Encoding every sentence
+for element in data:
+    encoded_element = tokenizer.encode_plus(str(element), add_special_tokens=True, 
+                                            truncation=True, max_length=max_length,
+                                            padding='max_length', return_tensors='pt')
+    input_ids.append(encoded_element["input_ids"])
+    attention_mask.append(encoded_element["attention_mask"])
+
+</code>
+     </pre>   
+     <p>The code iterates through each element in the input data, tokenizing them with the Camembert tokenizer. It uses encode_plus to handle the tokenization process, which includes adding special tokens, truncating or padding to meet the specified max_length, and returning the result as PyTorch tensors.</p>
+
+     <pre>
+<code class="language-python">
+
+print("Tokenization finished!")
+
+input_ids = torch.cat(input_ids, dim=0)
+attention_mask = torch.cat(attention_mask, dim=0)
+return input_ids, attention_mask
+
+</code>
+     </pre>
+
+<p>The tokenized data is stored in the input_ids and attention_mask lists. After tokenizing all elements, the function concatenates them into PyTorch tensors and returns them. These tensors are now ready to be used as input for Camembert or other NLP models.</p>
+
+<h3>Function: single_tokenizer(element, max_length)</h3>
+<p>This is a similar function, but it's designed to tokenize a single text element, unlike the previous function that processes a list of data.</p>
+<pre>
+    <code class="language-python">
+def single_tokenizer(element, max_length):
+    tokenizer = CamembertTokenizer.from_pretrained(PRETRAINED_MODEL_PATH)
+    encoded_element = tokenizer.encode_plus(str(element), add_special_tokens=True, 
+    truncation=True, max_length=max_length,
+    padding='max_length', return_tensors='pt')
+    print("Tokenization finished!")
+
+    return encoded_element["input_ids"], encoded_element["attention_mask"]
+
+    </code>
+</pre>
+<p>It tokenizes the given text element and returns the input IDs and attention mask as PyTorch tensors.</p>
+
+<h3>Conclusion</h3>
+<p>In the field of natural language processing, tokenization is the first crucial step in preparing text data for various NLP tasks. This code snippet, utilizing the Camembert model from Hugging Face Transformers, demonstrates how to tokenize text data efficiently. These tokenized representations can then be used for tasks like sentiment analysis, text classification, and more, bringing us one step closer to understanding and extracting insights from human language.</p>
+
+<h3>Complete code for tokenization</h3>
+<pre>
+    <code class="language-python">
+from transformers import CamembertTokenizer
+import torch 
+from config import PRETRAINED_MODEL_PATH
+
+
+# The below function tokenizes the data and it has two argupments
+
+def tokenization(data, max_length):
+
+    print("Starting tokenization...")
+
+    tokenizer = CamembertTokenizer.from_pretrained(PRETRAINED_MODEL_PATH)
+    input_ids = []
+    attention_mask = []
+    # Encoding every sentence
+    for element in data:
+        encoded_element = tokenizer.encode_plus(str(element), add_special_tokens=True, 
+                                                truncation=True,max_length=max_length,
+                                                padding='max_length', return_tensors='pt')
+        input_ids.append(encoded_element["input_ids"])
+        attention_mask.append(encoded_element["attention_mask"])
+    print("Tokenization finished!")
+
+
+    input_ids = torch.cat(input_ids,dim=0)
+    attention_mask = torch.cat(attention_mask, dim=0)
+    return input_ids, attention_mask
+
+def single_tokenizer(element, max_length):
+    tokenizer = CamembertTokenizer.from_pretrained(PRETRAINED_MODEL_PATH)
+ 
+    encoded_element = tokenizer.encode_plus(str(element), add_special_tokens=True, 
+                                                truncation=True,max_length=max_length,
+                                                padding='max_length', return_tensors='pt')
+    print("Tokenization finished!")
+    # input_ids.append(encoded_element["input_ids"])
+    # attention_mask.append(encoded_element["attention_mask"])
+    return encoded_element["input_ids"], encoded_element["attention_mask"]
+   
+
+    </code>
+</pre>
+</div>
+
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h1 class="accordion-header" id="heading-4">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#classifier" aria-expanded="true" aria-controls="classifier" style="background-color:#7C81AD;">
+                    Building an Intelligent Sentiment Classifier with Camembert and PyTorch
+                </button>
+            </h1>
+            <div id="classifier" class="accordion-collapse collapse show" aria-labelledby="heading-4" data-bs-parent="#frenchSentimentAnalysis">
+                <div class="accordion-body">
+                 <h3>Introduction</h3>
+                <p>  In the realm of natural language processing, building a powerful sentiment classifier is a fascinating challenge. This Python code snippet demonstrates how to construct an advanced sentiment classifier using Camembert, a cutting-edge transformer-based model, and PyTorch, a popular deep learning framework. This section will walk you through the intricacies of creating a Main Classifier neural network, tokenizing text data, and training the model for accurate sentiment analysis.</p>
+
+                <h3>Code Explanation</h3>
+                <pre>
+<code class="language-python">
+import torch.nn as nn 
+import torch 
+from transformers import CamembertModel
+from transformers import AdamW, get_linear_schedule_with_warmup
+from config import PRETRAINED_MODEL_PATH
+</code>
+</pre>
+
+<p>The code begins by importing essential libraries and dependencies. torch.nn is used for defining neural network components, and the CamembertModel from the Transformers library is employed as the backbone of the sentiment classifier. AdamW is used as the optimizer, and get_linear_schedule_with_warmup is employed for dynamic learning rate scheduling.</p>
+<h3>Defining the Main Classifier</h3>
+<pre>
+    <code class="language-python">
+class MainClassifier(nn.Module):
+    def __init__(self):
+        super(MainClassifier, self).__init__()
+        # Pretrained Model
+        self.camembert = CamembertModel.from_pretrained(PRETRAINED_MODEL_PATH)
+
+        # Hidden layer
+        self.fc1 = nn.Linear(self.camembert.config.hidden_size, 200)
+        # Dropout Regularizer
+        self.dropout = nn.Dropout(p=0.2)
+        # Batch normalization
+        self.batchnorm = nn.BatchNorm1d(self.camembert.config.hidden_size)
+        # Output layers
+        self.out = nn.Linear(200, 2)
+
+
+    </code>
+</pre>
+
+<p>In the MainClassifier class, a Camembert model is loaded and serves as the backbone. The model's output is passed through a hidden layer (self.fc1), followed by dropout regularization and batch normalization. The final output is produced by the self.out linear layer, which maps the features to two classes (positive and negative sentiments).</p>
+       
+<h3>Forward Pass</h3>
+<pre>
+    <code class="language-python">
+def forward(self, input_ids, input_masks):
+    camembert = self.camembert(input_ids, input_masks)
+    camembert = camembert[0]
+    x = camembert[:, 0, :]
+    x = self.batchnorm(x)
+    x = self.dropout(x)
+    x = torch.tanh(self.fc1(x))
+    output = self.out(x)
+    return output
+    </code>
+</pre>
+
+<p>The forward method defines the forward pass of the model. It processes the input data through the Camembert model, applies batch normalization and dropout, and passes the features through the hidden layer. The output represents the predicted sentiment.</p>
+<h3>Model initialization</h3>
+<pre>
+    <code class="language-python">
+def initialize_model(dataloader_train, device="cpu", epochs=3):
+    classifier = MainClassifier()
+    classifier.to(device)
+    optimizer = AdamW(classifier.parameters(), lr=5e-5, eps=1e-8)
+    total_steps = len(dataloader_train) * epochs
+    scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=0, num_training_steps=total_steps)
+    return classifier, optimizer, scheduler
+    </code>
+</pre>
+<p>The initialize_model function initializes the Main Classifier model. It takes a training data loader, a device specification, and the number of training epochs as inputs. The function returns the initialized classifier, optimizer, and scheduler, ready for training.</p>
+
+<h3>Conclusion</h3>
+<p>In this section, we've explored the process of building a sentiment classifier using the Camembert transformer model and PyTorch. By delving into the Main Classifier architecture, tokenization techniques, and model initialization, we've laid the foundation for accurate sentiment analysis. Armed with this knowledge, you can venture further into the realm of natural language processing, opening doors to diverse applications such as chatbots, social media analysis, and customer feedback systems. Happy coding!</p>
+
+<h3>Complete code for classifier</h3>
+<pre>
+    <code class="language-python">
+        import torch.nn as nn 
+import torch 
+from transformers import CamembertModel
+from transformers import AdamW, get_linear_schedule_with_warmup
+from config import PRETRAINED_MODEL_PATH
+
+class MainClassifier(nn.Module):
+    def __init__(self):
+        super(MainClassifier, self).__init__()
+        # Pretrained Model
+        self.camembert = CamembertModel.from_pretrained(PRETRAINED_MODEL_PATH)
+
+        # Hidden layer
+        self.fc1 = nn.Linear(self.camembert.config.hidden_size, 200)
+        # Dropout Regularizer
+        self.dropout = nn.Dropout(p=0.2)
+        # Batch normalization
+        self.batchnorm = nn.BatchNorm1d(self.camembert.config.hidden_size)
+        # Output layers
+        self.out = nn.Linear(200,2)
+
+
+    def forward(self,input_ids, input_masks):
+        camembert = self.camembert(input_ids, input_masks)
+        camembert = camembert[0]
+        x = camembert[:, 0, :]
+        x = self.batchnorm(x)
+        x = self.dropout(x)
+        x = torch.tanh(self.fc1(x))
+        output = self.out(x)
+        return output
+    
+
+# Initialization of the model 
+def initialize_model(dataloader_train, device="cpu", epochs=3):
+    classifier = MainClassifier()
+    classifier.to(device)
+    optimizer = AdamW(classifier.parameters(), lr=5e-5, eps=1e-8)
+    total_steps  = len(dataloader_train) * epochs
+    scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=0, num_training_steps=total_steps)
+    return classifier, optimizer, scheduler
+
+
+
+    </code>
+</pre>
+</div>
+
+            </div>
+        </div>
+
+
+
     </div>
 
 </div>
