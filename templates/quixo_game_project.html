@@ -1,0 +1,655 @@
+<div class="container">
+
+    <div class="accordion" id="quixoGame">
+        <div class="accordion-item">
+            <h1 class="accordion-header" id="heading-1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#introduction" aria-expanded="true" aria-controls="introduction" style="background-color:#7C81AD;">
+                    Analyse du problème
+                </button>
+            </h1>
+            <div id="introduction" class="accordion-collapse collapse show" aria-labelledby="heading-1" data-bs-parent="#quixoGame">
+                <div class="accordion-body">
+
+                    <p>      L’objectif de ce travail est de développer un jeu Quixo en utilisant un langage de
+programmation orienté objet basé sur la modélisation UML et les techniques de patron
+de conception. En effet, mon analyse de problème est faite de manière détaillée selon les
+principes suivants :</p>
+
+<ul>
+    <li><strong>Règles de jeu :</strong> Le jeu de Quixo est un jeu de société pour deux joueurs ou plusieurs où
+        les joueurs doivent aligner cinq de leurs jetons dans une rangée horizontale, verticale
+        ou diagonale pour gagner. Les joueurs peuvent déplacer les jetons en effectuant des
+        échanges avec les jetons voisins. Au debut de jeu toutes les cases sont vides.</li>
+    <li><strong>Plateau de jeu :</strong> Le plateau de jeu est composé de 25 cases formant une grille 5x5.
+        Chacune des cases contient un jeton qui peut être déplacé par les joueurs. Le but du
+        jeu est de créer une ligne de cinq jetons de la même catégorie (Croix ou cercle).</li>
+    <li><strong>Interface utilisateur :</strong> L’interface utilisateur permet aux joueurs de sélectionner les jetons
+        à déplacer, de visualiser le plateau de jeu et de recevoir des notifications sur le résultat
+        de la partie.
+        </li>
+    <li><strong>Joueur :</strong> Il y a deux types de joueurs, humain et automatique (IA ou random). Le joueur
+        humain peut jouer en utilisant une interface graphique, tandis que l’IA utilise des
+        algorithmes de recherche pour trouver les meilleurs coups possibles.</li>
+    <li><strong>Stockage de données : </strong> Il est nécessaire de stocker l’état actuel de la partie pour per-
+        mettre la sauvegarde et la reprise de la partie plus tard. Cela nécessite l’utilisation de
+        la sérialisation pour stocker les informations de jeu dans un fichier et la désérialisation
+        pour charger les informations à partir du fichier.</li>
+</ul>
+
+ <p>   En résumé, le jeu de Quixo est un jeu de stratégie pour deux ou plusieurs joueurs où
+    les joueurs doivent aligner cinq de leurs jetons dans une rangée horizontale, verticale ou
+    diagonale pour gagner. Il nécessite une interface utilisateur pour permettre aux joueurs
+    de jouer, un système de stockage pour sauvegarder les parties et un système IA(minimax
+    algorithme dans notre cas) pour jouer contre l’ordinateur.</p>
+
+                 
+                </div>
+
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h1 class="accordion-header" id="heading-2">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#diagram" aria-expanded="true" aria-controls="diagram" style="background-color:#7C81AD;">
+                    Diagrame de classe
+                </button>
+            </h1>
+            <div id="diagram" class="accordion-collapse collapse show" aria-labelledby="heading-2" data-bs-parent="#quixoGame">
+                <div class="accordion-body">
+
+                    <img src="{{url_for('static', path='img/diagram_de_class.png')}}" alt="diagram">
+                    <h4>Factory design pattern</h4>
+
+                   <p> En utilisant le modèle de conception de Fabrique pour gérer la création des différents
+                    types de joueurs et aussi des écrans, j’ai choisi une approche orientée objet pour séparer la
+                    logique de création des objets de la logique de jeu. </p>
+                    <p>En créant une classe abstraite Player/Screen pour définir les méthodes de base que tous les types de joueurs/ecrans doivent implémenter, je garanti que tous les joueurs/écrans ont une interface commune, ce qui
+                    facilite la communication entre les différentes parties du programme. </p> 
+
+                    <p>En utilisant des classes concrètes pour les joueurs aléatoires, humains et IA qui héritent de Player et implémentent les méthodes nécessaires pour jouer, nous avons permis une implémentation spécifique
+                    pour chaque type de joueur. Cela est aussi valable pour les differentes classes concrètes pour les écrans MainScreen, GameScreen et WelcomeScreen Enfin, en utilisant une classe
+                    PlayersFactory/View pour créer les objets de joueur/écrans en utilisant les classes concrètes définies précédemment, j’ai permis une création flexible des objets de joueur/écran et facilité les changements futurs si vous souhaitez ajouter de nouveaux types de joueurs ou remplacer
+                    les joueurs existants et ou les écrans.</p>
+                    <p>En utilisant cette approche de conception, j’ai amélioré
+                    la flexibilité et la maintenabilité de mon code en me permettant de facilement ajouter
+                    ou supprimer des types de joueurs et ou écrans sans avoir à effectuer des modifications
+                    majeures dans le reste de mon code.</p> 
+
+
+                    <h4>State design pattern</h4>
+                    <p></p>En utilisant le modèle de conception d’état, j’ai défini des classes pour chaque état
+                    distinct de mon jeu, comme l’écran d’accueil et l’écran principal, chacune avec des
+                    comportements uniques pour gérer les événements et mettre à jour l’affichage en fonction
+                    de l’état actuel. Cette approche vous permet de séparer la logique de l’interface utilisateur
+                    de la logique de jeu en utilisant des classes dédiées pour chaque état, ce qui rend ce code
+                    plus facile à comprendre et à maintenir.
+                    
+                    <p>Dans mon implémentation, j’ai utilisé une instance de la classe Controller pour gérer
+                        la transition entre les différents états en utilisant une variable d’état qui contient l’objet
+                        d’état en cours. Cela permet de gérer facilement les transitions entre les différents états en
+                        modifiant simplement la valeur de cette variable. Par exemple, lorsque l’utilisateur clique sur
+                        l’écran pour commencer à jouer, j’ai modifie la variable d’état pour passer de l’état d’écran
+                        d’accueil à l’état d’écran principal.</p>
+                    <p>En utilisant cette approche de conception, j’ai également facilité les ajouts futurs
+                        ou les modifications de l’interface utilisateur en étant capable de créer de nouveaux
+                        états ou de modifier les comportements des états existants en créant de nouvelles
+                        classes ou en modifiant les classes existantes sans avoir à effectuer des modifications
+                        majeures dans le reste de mon code. Cela permet également de facilement ajouter de nou-
+                        velles fonctionnalités à l’interface utilisateur sans avoir à perturber la logique de jeu existante.</p>
+                    <p>En utilisant cette approche de conception, j’ai également amélioré la flexibilité et la
+                        maintenabilité de mon code en me permettant de facilement ajouter ou supprimer des états
+                        sans avoir à effectuer des modifications majeures dans le reste de code</p>
+
+                        <h4>Single design pattern</h4>
+                        <p>Pour le modèle, j’ai utilisé le pattern de conception Singleton pour la classe GameState
+                            qui est responsable de gérer l’état du jeu, avec toutes les informations nécessaires pour la
+                            partie de Quixo. Elle contient des informations telles que les positions de chaque pièce sur
+                            le plateau de jeu, les joueurs actifs, les déplacements possibles, etc. En utilisant Singleton,
+                            j’ai garanti qu’il n’y aurait qu’une seule instance de cette classe à tout moment, ce qui est
+                            important pour maintenir l’intégrité des données et éviter les erreurs potentielles dans le jeu.
+                            </p>
+
+
+
+
+
+
+
+
+                                    
+
+                 
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="accordion-item">
+            <h1 class="accordion-header" id="heading-3">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#functionnality" aria-expanded="true" aria-controls="functionnality" style="background-color:#7C81AD;">
+                    Différentes fonctionnalités logicielles
+                </button>
+            </h1>
+            <div id="functionnality" class="accordion-collapse collapse show" aria-labelledby="heading-3" data-bs-parent="#quixoGame">
+                <div class="accordion-body">
+                    <p>Dans ce projet, j’ai utilisé python comme langage d’implémentation. Pour l’interface
+                        graphique (GUI), j’ai utilisé la bibliothèque pygame de python, qui offre des fonctionnalités simples pour dessiner et schématiser le jeu. J’ai également utilisé des bibliothèques
+                        importantes telles que numpy, math et random pour aider à la mise en œuvre de certaines
+                        fonctionnalités. En ce qui concerne la structure de données, j’ai utilisé des listes, des dictionnaires et des tableaux pour stocker des informations et des données. Voici les differentes
+                        fonctionnalités logicielles développées dans ce projet :</p>
+
+                        <ul>
+                            <li><strong>Fonctionnalité de déplacement des jetons : </strong>J’ai développé une fonctionnalité qui
+                                permet aux joueurs de déplacer les jetons sur le plateau de jeu en utilisant une interface
+                                graphique (pygame de python). La fonctionnalité utilise la logique de jeu pour vérifier
+                                si le déplacement est valide et met à jour le plateau de jeu en conséquence</li>
+                            <li><strong>Fonctionnalité de détection de victoire : </strong>J’ai implémenté une fonctionnalité qui détecte
+                                si un joueur a gagné la partie en alignant cinq de ses jetons dans une rangée horizontale, verticale ou diagonale. Cette fonctionnalité utilise une analyse de la grille de jeu
+                                pour détecter les alignements de jetons et déclenche une notification pour indiquer le
+                                vainqueur.</li>
+                            <li><strong>Fonctionnalité de choix de joueur :</strong> J’ai développé une fonctionnalité qui permet aux
+                                utilisateurs de choisir entre un joueur humain et un joueur automatique pour chaque
+                                tour de jeu. Cette fonctionnalité utilise un design pattern state pour gérer les différents
+                                types de joueurs et les implémentations de la stratégie de jeu correspondante</li>
+                            <li><strong>Fonctionnalité d’IA :</strong> J’ai développé une fonctionnalité qui permet aux joueurs de jouer
+                                contre l’ordinateur en utilisant une intelligence artificielle. Cette fonctionnalité utilise des
+                                algorithmes de recherche (alphabeta pruning une version modifiée de minimax) pour
+                                trouver les meilleurs coups possibles, en prenant en compte les différentes stratégies
+                                de jeu et les risques associés.</li>
+                        </ul>
+
+                 
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="accordion-item">
+            <h1 class="accordion-header" id="heading-4">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#difficulty" aria-expanded="true" aria-controls="difficulty" style="background-color:#7C81AD;">
+                    Les difficultés rencontrées et les améliorations possibles de mon
+                    programme
+                </button>
+            </h1>
+            <div id="difficulty" class="accordion-collapse collapse show" aria-labelledby="heading-4" data-bs-parent="#quixoGame">
+                <div class="accordion-body">
+                    <p>Voici quelques difficultés que vous pouvez rencontrer dans ce projet.</p>
+
+                        <ul>
+                            <li><strong>Détection de victoire :  </strong>Il peut être difficile de mettre en place une logique efficace pour
+                                détecter les alignements de jetons gagnants. Les améliorations possibles incluent
+                                l’utilisation de structures de données plus efficaces pour stocker les informations de
+                                jeu, comme les matrices de bits pour stocker les jetons sur le plateau de jeu.</li>
+                            <li><strong>Sauvegarde de la partie : </strong> Il peut être difficile de stocker les informations de jeu
+                                de manière efficace pour permettre la sauvegarde et la reprise de la partie. Les
+                                améliorations possibles incluent l’utilisation de formats de fichiers plus efficaces pour
+                                stocker les informations de jeu, comme le format JSON</li>
+                            <li><strong>IA : </strong> Il peut être difficile de développer une IA efficace qui joue de manière optimale
+                                contre les joueurs humains. Les améliorations possibles incluent l’utilisation de techniques de recherche plus avancées, comme l’apprentissage automatique pour améliorer les capacités de l’IA.</li>
+                       
+                        </ul>
+
+                 
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="accordion-item">
+            <h1 class="accordion-header" id="heading-5">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#code" aria-expanded="true" aria-controls="code" style="background-color:#7C81AD;">
+                   Quelques example de code et lien de projet complet
+                </button>
+            </h1>
+            <div id="code" class="accordion-collapse collapse show" aria-labelledby="heading-5" data-bs-parent="#quixoGame">
+                <div class="accordion-body">
+
+                    <p>Voici le lien Github de projet: <a href="https://github.com/borkounou/quixo_game_with_AI_mvc_design_pattern" style="color: red; text-decoration: underline;">quixo game with mvc and AI</a></p>
+
+                    <h4>Controller</h4>
+
+<pre>
+<code class="language-python">
+    
+import pygame
+from Players.players_factory import PlayersFactory
+
+class Controller:
+    def __init__(self, model, view):
+        # Initialize instance variables
+        self.model = model
+        self.view = view
+        self.player = PlayersFactory(self.model)
+        self.state = WelcomeScreenState()
+
+    def controller_reset(self):
+        # Reset the game model and view
+        self.model.reset_game()
+        self.view.view_reset()
+        # Re-initialize the controller
+        self.__init__(self.model, self.view)
+
+    def run_game(self):
+        # Initialize Pygame
+        pygame.init()
+        # Run the game loop
+        while self.model.running:
+            # Process events
+            for event in pygame.event.get():
+                self.state.handle_event(self, event)
+            # Update the game state
+            self.state.update_game(self)
+            # Update the display
+            pygame.display.update()
+            # Wait to maintain a frame rate of 30 fps
+            self.view.clock.tick(30)
+
+class WelcomeScreenState:
+    def handle_event(self, controller, event):
+        """Process events and update the game state.
+
+        Parameters:
+        controller (Controller): The controller object.
+        event (Event): The Pygame event object.
+        """
+        if event.type == pygame.QUIT:
+            # Set the running attribute of the game model to False to stop the game loop
+            controller.model.gameOver()
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_r:
+            # Reset the game
+            controller.controller_reset()
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            # Get the mouse coordinates
+            x, y = controller.model.get_mouse_coordinate(pygame.mouse.get_pos())
+            # Start the game by setting start_game attribute of the game model to True
+            # and setting the current player based on the mouse coordinates
+            controller.model.start_game = True
+            controller.model.start_player(x, y)
+            # Set the game state to the main screen state
+            controller.state = MainScreenState()
+
+    def update_game(self, controller):
+        """Update the game display.
+
+        Parameters:
+        controller (Controller): The controller object.
+        """
+        # Build the welcome screen
+        screen = controller.view.build_screen("welcome_screen")
+        # Draw the screen
+        screen.draw_screen(controller.view.screen)
+        
+
+class MainScreenState:
+
+  def handle_event(self, controller, event):
+      """Process events and update the game state.
+
+      Parameters:
+      controller (Controller): The controller object.
+      event (Event): The Pygame event object.
+      """
+      if event.type == pygame.QUIT:
+          # Set the running attribute of the game model to False to stop the game loop
+          controller.model.gameOver()
+      elif event.type == pygame.KEYDOWN and event.key == pygame.K_r:
+          # Reset the game
+          controller.controller_reset()
+      elif event.type == pygame.MOUSEBUTTONDOWN:
+          # Get the mouse coordinates
+          x, y = controller.model.get_mouse_coordinate(pygame.mouse.get_pos())
+          # Get the human player object and call the playing method with the mouse coordinates as arguments
+          human_player = controller.player.play("human")
+          human_player.playing(x, y)
+      elif controller.model.player_turn == False:
+          # Get the AI player object and call the playing method with the game board as an argument
+          ai_player = controller.player.play("ai")
+          ai_player.playing(controller.model.board)
+
+  def update_game(self, controller):
+      """Update the game display.
+
+      Parameters:
+      controller (Controller): The controller object.
+      """
+      # Build the main screen
+      screen = controller.view.build_screen("main_screen")
+      # Draw the main screen
+      screen.draw_screen(controller.view.screen, controller.model.board)
+      # Build the game screen
+      screen = controller.view.build_screen("game_screen")
+      # Draw the game screen
+      screen.draw_screen(
+          controller.view.screen, controller.model.ai_move, controller.model.winner_state
+      )
+
+
+</code>
+</pre>
+
+<h4>Model</h4>
+<h5>Board code</h5>
+
+<pre>
+<code class="language-python">
+    import numpy as np 
+from constants import DIMENSION, SQ_SIZE,IMAGE_SIZE
+from constants import INDEX_LAST_COL,INDEX_LAST_ROW
+from .move import Move
+from .winner import Winner
+
+class GameState:
+    X = 1 # Human Player
+    O = -1 # AI player
+    BLANK = 0 # Empty no player
+    _instance = None
+
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+        
+    def __init__(self, board=None, turn=1):
+        self.board = self.__create_board() if board is None else board.board
+        self.turn = turn if board is not None else 1
+        # move class
+        self.move = Move()
+        # Winner class 
+        self.ai_move = None
+        self.winner_state =None
+        self.winner = Winner()
+        self.player_turn = True
+        self.sq_selected = ()
+        self.player_click = []
+        self.running = True
+        self.start_game = False
+        self.movable = self.move.get_movables_tiles(self.board)
+
+    # Create the board using numpy of zeros
+    def __create_board(self):
+
+        return np.zeros((DIMENSION, DIMENSION), dtype=int)
+
+    # Play the game
+    def play(self,board,piece,move):
+        board[piece] =self.turn
+        self.move.move_tiles(board,piece,move,self.turn)
+        self.changeTurn()
+
+    def get_possible_moves(self):
+        allMoves = []
+        for piece in self.movable:
+            moves = self.get_possibles_destinations(piece)
+            for move in moves:
+                allMoves.append((piece,move))
+        np.random.shuffle(allMoves)
+        return allMoves
+
+    
+    def gameOver(self):
+        self.running = False
+
+    def changeTurn(self):
+        if(self.turn ==self.X):
+            self.turn = self.O
+        else:
+            self.turn = self.X
+
+    
+    def isGameEnd(self):
+        return all(self.board[index]!=0 for index in self.movable)
+
+    
+    def isGameEndFinal(self):
+
+        """Determine if the game has ended in a win or a draw.
+
+        Returns:
+        int: The value of the winning player (either self.X, self.O, or self.BLANK) if the game has ended in a win or a draw, or 0 otherwise.
+        """
+        first_diagonal = np.diagonal(self.board)
+        second_diagonal = np.diagonal(np.rot90(self.board))
+        if np.all(first_diagonal == self.X) or np.all(first_diagonal == self.O):
+            return self.board[0, 0]
+        if np.all(second_diagonal == self.X) or np.all(second_diagonal == self.O):
+            return self.board[0, INDEX_LAST_ROW]
+
+        for i in range(0, INDEX_LAST_ROW + 1):
+            row = self.board[i, :]
+            col = self.board[:, i]
+            if np.all(row == self.X) or np.all(row == self.O):
+                return self.board[i, 0]
+            if np.all(col == self.X) or np.all(col == self.O):
+                return self.board[0, i]
+
+        return 0
+    
+    def reset_game(self):
+        self.__init__()
+    
+    def start_player(self, x,y):
+        position = [(1,2),(3,2)]
+        if (x,y) in position:
+            if (x,y)==position[0]: self.turn=self.X
+            if (x,y)==position[1]: self.turn = self.O
+           
+
+    def get_mouse_coordinate(self, pos):
+        x = int((pos[0]-SQ_SIZE)/IMAGE_SIZE)
+        y = int((pos[1]-SQ_SIZE)/IMAGE_SIZE)
+        if x<0:x=0
+        if x>4: x=4
+        if y<0: y=0
+        if y>4: y=4
+        return x,y
+
+
+    def final_state(self,board,turn):
+
+        if self.winner.winner_check(board)==turn:
+                    print(self.winner.winner_check(board))
+                    print(f"player: {self.winner.winner_check(board)} wins!")
+            
+        else:
+            if not self.isGameEnd():
+                print("The game is running and the players are playing")
+                print(f"It is player {self.turn} turn")
+
+            else:
+                self.end = True
+                self.reset_game()
+
+    def get_possibles_destinations(self, pos_end):
+        """Return a list of possible destinations for a given position.
+
+        Parameters:
+        pos_end (tuple): The position for which to find possible destinations.
+
+        Returns:
+        list: A list of tuples representing the possible destinations.
+        """
+        destinations = []
+        (x, y) = pos_end
+
+        if x in (0, INDEX_LAST_ROW):
+            if y != 0:
+                destinations.append((x, 0))
+            if y != INDEX_LAST_COL:
+                destinations.append((x, INDEX_LAST_COL))
+            opposite = 0 if x == INDEX_LAST_ROW else INDEX_LAST_ROW
+            destinations.append((opposite, y))
+
+        if (y in (0, INDEX_LAST_COL)) and (x not in (0, INDEX_LAST_ROW)):
+            if x != 0:
+                destinations.append((0, y))
+            if x != INDEX_LAST_ROW:
+                destinations.append((INDEX_LAST_COL, y))
+            opposite = 0 if y == INDEX_LAST_COL else INDEX_LAST_COL
+            destinations.append((x, opposite))
+
+        return destinations
+
+
+</code>
+</pre>
+
+
+<h5>Move code</h5>
+<pre>
+<code class="language-python">
+    # Import the DIMENSION constant from the constants module
+from constants import DIMENSION
+
+class Move:
+    
+    def is_movable_piece(self,x,y):
+        # Return True if the piece is located at the edge of the board (x or y equals 0 or 4)
+        return x==0 or y==0 or x==4 or y ==4
+
+    def get_movables_tiles(self,board,player_value=0):
+        # Create an empty list to store the movable tiles
+        movable = []
+        # Iterate over the rows and columns of the board
+        for x in range(DIMENSION):
+            for y in range(DIMENSION):
+                # Get the value at the current position
+                value = board[x][y]
+                # If the current position is a movable piece and the value is 0 or equal to the player value, add the position to the list of movable tiles
+                if self.is_movable_piece(x,y) and (value ==0 or value ==player_value):
+                    movable.append((x,y))
+        # Return the list of movable tiles
+        return movable
+    
+    def move_row(self, board,row,col_start,col_end,value):
+        # Determine the step size for the loop based on whether col_end is greater or less than col_start
+        step = -1 if col_end>col_start else 1
+        # Determine the starting index for the loop based on the step size
+        index_start = col_start-1 if col_end>col_start else col_start + 1
+        # Iterate over the columns in the row
+        for col in range(col_end, index_start,step):
+            # Save the value at the current position
+            prev_val = board[row][col]
+            # Set the value at the current position to the given value
+            board[row][col] = value
+            # Update the value to the previous value
+            value = prev_val
+
+    def move_col(self,board,line,row_start,row_end,value):
+        # Determine the step size for the loop based on whether row_end is greater or less than row_start
+        step = -1 if row_end>row_start else 1
+        # Determine the starting index for the loop based on the step size
+        index_start = row_start - 1 if row_end > row_start else row_start + 1
+        # Iterate over the rows in the column
+        for x in range(row_end, index_start, step):
+            # Save the value at the current position
+            prev_val = board[x][line]
+            # Set the value at the current position to the given value
+            board[x][line] = value
+            # Update the value to the previous value
+            value = prev_val
+
+    def move_tiles(self, board, pos_start,pos_end,value):
+        # Unpack the start and end positions into row and column variables
+        (row_start, col_start) = pos_start
+        (row_end, col_end) = pos_end
+        # If the start position is not a movable piece
+
+        if not self.is_movable_piece(row_start,col_start):
+            # Print an error message and exit the function
+            print(f"This {(row_start, col_start)} is not a movable tile!")
+            return
+        
+        # If the value at the start position is not 0 and is not equal to the given value
+        if board[row_start][col_start] != 0 and board[row_start][col_start] != value:
+            # Print an error message and exit the function
+            print(f"Can't change the value of tile {row_start} - {col_start}")
+            return
+
+        # If the start and end rows are the same (i.e. the move is horizontal)
+        if row_start == row_end:
+            # Call the move_row function to move the tiles in the row
+            self.move_row(board,row_start, col_start,col_end,value)
+        
+        # If the start and end columns are the same (i.e. the move is vertical)
+        elif col_start == col_end:
+            # Call the move_col function to move the tiles in the column
+            self.move_col(board,col_start,row_start,row_end,value)
+            
+        # If the start and end positions are not in the same row or column
+        else:
+            # Print an error message
+            print("Cannot move this tile to this position")
+
+       
+</code>
+</pre>
+
+
+
+<h5>Winner code</h5>
+<pre>
+<code class="language-python">
+    # Import the DIMENSION constant from the constants module
+    from constants import DIMENSION
+    
+    """
+    The objectif of this class is to implements the winning logic
+    """
+    class Winner:
+        
+        def winner_check(self,board):
+    
+            '''
+            @return 0 if there is  no win yet
+            @return 1 if player 1 wins
+            @return -1 if player 2 wins
+            '''
+            # Check for vertical wins
+            for col in range(DIMENSION):
+                # If all the values in the column are the same and not 0, return the value (1 or -1)
+                if board[0][col] == board[1][col] == board[2][col]== board[3][col]==board[4][col] != 0:
+                    return board[0][col]
+            
+            # Check for horizontal wins
+            for row in range(DIMENSION):
+                # If all the values in the row are the same and not 0, return the value (1 or -1)
+                if board[row][0] == board[row][1] == board[row][2]== board[row][3]==board[row][4] != 0:
+                    return board[row][0]
+            
+            # Check for descending diagonal wins
+            if board[0][0] == board[1][1] == board[2][2]==board[3][3] ==board[4][4] != 0:
+                # Return the value at the center of the diagonal (1 or -1)
+                return board[2][2]
+    
+            # Check for ascending diagonal wins
+            if board[4][0] == board[3][1] == board[2][2]==board[1][3] ==board[0][4] != 0:
+                # Return the value at the center of the diagonal (1 or -1)
+                return board[2][2]
+    
+            # If no win has been detected, return 0
+            return 0
+      
+    
+</code>
+</pre>
+
+
+                 
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+</div>
+
+
+
