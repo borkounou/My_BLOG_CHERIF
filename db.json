@@ -12,11 +12,19 @@
 
         },
         {
+            "id":"232434EDdlqdlqmDFSFSFSF",
+            "title": " Quixo game",
+            "subtitle": "Designed a Quixo game with AI and with design pattern techniques using Python and Design pattern techniques",
+            "author": "Cherif Hassan",
+            "contents": "quixo_game_project.html"
+
+        },
+        {
             "id":"232434EDDFSFSFSF",
             "title": " Building a wine detector mobile app ",
             "subtitle": "A full pledged mobile APP built using Flutter nodeJS and FLask python",
             "author": "Cherif Hassan",
-            "contents": "project_sentiment_analysis.html"
+            "contents": "coming_soon.html"
 
         },
 
@@ -25,25 +33,18 @@
             "title": " Automatic Answer Generation ",
             "subtitle": "A deep learning sequence sequence generation model based on Barthez model train on OrangeSum data",
             "author": "Cherif Hassan",
-            "contents": "project_sentiment_analysis.html"
+            "contents": "coming_soon.html"
         },
 
 
-        {
-            "id":"232434EDdlqdlqmDFSFSFSF",
-            "title": " Quixo game",
-            "subtitle": "Designed a Quixo game with AI and with design pattern techniques using Python and Design pattern techniques",
-            "author": "Cherif Hassan",
-            "contents": "quixo_game_project.html"
-
-        },
+   
 
         {
             "id":"232434EDfddsfszDFSFSFSF",
-            "title": " Man must explore 5",
+            "title": "Analysis",
             "subtitle": "Problems look mighty small from 150 miles up",
             "author": "Cherif Hassan",
-            "contents": "project_sentiment_analysis.html"
+            "contents": "coming_soon.html"
 
         }
     ]
