@@ -44,6 +44,16 @@ async def post(request:Request):
     return templates.TemplateResponse("post.html", {"request":request, "posts":posts})
 
 
+@app.get("/post/{id}",response_class=HTMLResponse)
+async def single(id:str, request:Request):
+    post = next((p for p in posts if p["id"]==id),None)
+
+    if post: 
+        return templates.TemplateResponse("single.html", {"request":request, "post":post})
+    
+    else:
+        return templates.TemplateResponse("404.html",{"request":request})
+        #raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"post with id:{id} was not found")
 
 
 @app.get("/about", response_class=HTMLResponse)
@@ -68,16 +78,10 @@ async def tutorial(request:Request):
 async def cv(request:Request):
     return templates.TemplateResponse("cv.html",{"request":request})
 
-@app.get("/post/{id}",response_class=HTMLResponse)
-async def single(id:str, request:Request):
-    post = next((p for p in posts if p["id"]==id),None)
 
-    if post: 
-        return templates.TemplateResponse("single.html", {"request":request, "post":post})
-    
-    else:
-        return templates.TemplateResponse("404.html",{"request":request})
-        #raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"post with id:{id} was not found")
+@app.get("/filmReview", response_class=HTMLResponse)
+async def filmReview(request:Request):
+    return templates.TemplateResponse("french_film_reviews.html", {"request":request})
     
 
 

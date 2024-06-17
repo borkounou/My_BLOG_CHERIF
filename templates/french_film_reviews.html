@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{%block title%} Movies reviews model classification {%endblock%}
+
+{%block content%}
+
+
+<header class="intro-header" style="background-image: url({{url_for('static', path='img/post-bg.jpg')}})">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+              
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+            <form method="post" id="review-classification">
+                <div class="col-lg-8 col-md-8 col-sm-12 mt-5 comment-section">
+                <label for="comment"> Your comments:</label>
+                <input type="text" id="comment" placeholder="your comment">
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 mt-5 comment-section">
+                    <button type="submit" class="btn btn-primary">Compute</button>
+                </div>
+
+                
+
+            </form>
+        
+    </div>
+
+</div>
+
+{%endblock%}

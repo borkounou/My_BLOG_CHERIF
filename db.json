@@ -7,7 +7,8 @@
             "title": "Revolutionizing French Cinema Reviews: Harnessing Camembert Transformers, PyTorch, and FastAPI in a Full-Fledged Project with a Stunning UI",
             "subtitle": "Exploring Sentiment Analysis, Deep Learning, and Interactive User Interfaces in a Comprehensive Project",
             "author": "Cherif Hassan",
-            "contents": "project_sentiment_analysis.html"
+            "contents": "project_sentiment_analysis.html",
+            "img":"img/sentiment.jpeg"
 
 
         },
@@ -16,7 +17,8 @@
             "title": " Quixo game",
             "subtitle": "Designed a Quixo game with AI and with design pattern techniques using Python and Design pattern techniques",
             "author": "Cherif Hassan",
-            "contents": "quixo_game_project.html"
+            "contents": "quixo_game_project.html",
+            "img":"img/quixo.jpeg"
 
         },
         {
@@ -24,7 +26,8 @@
             "title": " Building a wine detector mobile app ",
             "subtitle": "A full pledged mobile APP built using Flutter nodeJS and FLask python",
             "author": "Cherif Hassan",
-            "contents": "coming_soon.html"
+            "contents": "coming_soon.html",
+            "img":"img/wine.jpeg"
 
         },
 
@@ -33,7 +36,8 @@
             "title": " Automatic Answer Generation ",
             "subtitle": "A deep learning sequence sequence generation model based on Barthez model train on OrangeSum data",
             "author": "Cherif Hassan",
-            "contents": "coming_soon.html"
+            "contents": "coming_soon.html",
+            "img":"img/post-sample-image.jpg"
         },
 
 
@@ -44,7 +48,8 @@
             "title": "Analysis",
             "subtitle": "Problems look mighty small from 150 miles up",
             "author": "Cherif Hassan",
-            "contents": "coming_soon.html"
+            "contents": "coming_soon.html",
+            "img":"img/post-sample-image.jpg"
 
         }
     ]

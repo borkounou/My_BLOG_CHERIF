@@ -4,7 +4,7 @@
 
 {%block content%}
 
-    <header class="intro-header" style="background-image: url({{url_for('static', path='img/post-bg.jpg')}})">
+    <header class="intro-header" style="background-image: url({{url_for('static', path='img/home-bg.jpg')}})">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -29,7 +29,7 @@
                     <a href="{{url_for('single', id=post.id)}}">
                         <div class="card">
                         
-                            <img id="post-img" class="card-img-top card-img" src="{{url_for('static', path='img/post-sample-image.jpg')}}">
+                            <img id="post-img" class="card-img-top card-img" src='{{url_for("static", path=post.img)}}'>
                             <div class="card-body">
                                 <a href="{{url_for('single', id=post.id)}}" class="card-title-link"><h3 class="card-title">{{post.title}}</h3></a>
                             
