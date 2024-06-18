@@ -4,7 +4,7 @@
 
 {%block content%}
 
-    <header class="intro-header" style="background-image: url({{url_for('static', path='img/home-bg.jpg')}})">
+    <header class="intro-header" style="background-image: url({{https_url_for(request,'static', path='img/home-bg.jpg')}})">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -26,14 +26,14 @@
             <div class="row g-3">
                 {% for post in posts%}
                 <div class="col-12-small col-6 col-6-medium col-lg-6 col">
-                    <a href="{{url_for('single', id=post.id)}}">
+                    <a href="{{https_url_for(request,'single', id=post.id)}}">
                         <div class="card">
                         
-                            <img id="post-img" class="card-img-top card-img" src='{{url_for("static", path=post.img)}}'>
+                            <img id="post-img" class="card-img-top card-img" src='{{https_url_for(request,"static", path=post.img)}}'>
                             <div class="card-body">
-                                <a href="{{url_for('single', id=post.id)}}" class="card-title-link"><h3 class="card-title">{{post.title}}</h3></a>
+                                <a href="{{https_url_for(request,'single', id=post.id)}}" class="card-title-link"><h3 class="card-title">{{post.title}}</h3></a>
                             
-                                <p id="cardText" class="card-text"><a href="{{url_for('single', id=post.id)}}">{{post.subtitle | safe}}</a></p>
+                                <p id="cardText" class="card-text"><a href="{{https_url_for(request,'single', id=post.id)}}">{{post.subtitle | safe}}</a></p>
                             </div>
                         </div>
                      </a>

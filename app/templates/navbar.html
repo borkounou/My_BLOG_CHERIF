@@ -6,33 +6,33 @@
                 <span class="sr-only">Toggle navigation</span>
                 Menu <i class="fa fa-bars"></i>
             </button>
-            <!-- <a class="navbar-brand" href="{{url_for('index')}}">Borkounou</a> -->
+            <!-- <a class="navbar-brand" href="{{https_url_for(request,'index')}}">Borkounou</a> -->
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right ">
                 <li>
-                    <a href="{{url_for('index')}}">Home</a>
+                    <a href="{{https_url_for(request,'index')}}">Home</a>
                 </li>
                 <li>
-                    <a href="{{url_for('about')}}">About</a>
-                </li>
-
-                <li>
-                    <a href="{{url_for('cv')}}">Resume</a>
+                    <a href="{{https_url_for(request,'about')}}">About</a>
                 </li>
 
                 <li>
-                    <a href="{{url_for('post')}}"> Projects</a>
+                    <a href="{{https_url_for(request,'cv')}}">Resume</a>
+                </li>
+
+                <li>
+                    <a href="{{https_url_for(request,'post')}}"> Projects</a>
                 </li>
              
                 <li>
-                    <a href="{{url_for('contact')}}">Contact</a>
+                    <a href="{{https_url_for(request,'contact')}}">Contact</a>
                 </li>
 
                 <li>
-                    <a href="{{url_for('tutorial')}}">Tutorial</a>
+                    <a href="{{https_url_for(request,'tutorial')}}">Tutorial</a>
                 </li>
             </ul>
         </div>

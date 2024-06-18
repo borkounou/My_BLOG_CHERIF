@@ -1,4 +1,4 @@
-from fastapi import FastAPI, status, HTTPException,Request
+from fastapi import FastAPI, status,Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
@@ -8,11 +8,17 @@ import json
 import uuid
 
 
+def https_url_for(request:Request, name:str, **path_params:any)->str:
+    http_url = request.url_for(name, **path_params)
+    https_url =str(http_url).replace("http", "https", 1)
+    return https_url#request.url_for(name, **path_params)
+
+
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
-
+templates.env.globals["https_url_for"] = https_url_for
 with open('db.json') as file:
     posts = json.load(file)
 

@@ -27,7 +27,7 @@
                 <hr>
                 <div class="post-preview">
                     {%for post in posts%}
-                    <a href="{{url_for('single', id=post.id)}}">
+                    <a href="{{https_url_for(request,'single', id=post.id)}}">
                         <h2 class="post-title">
                             {{post.title}}
                             <!-- Man must explore, and this is exploration at its greatest -->
@@ -51,7 +51,7 @@
                 <div class="row-md-4 row-12">
                 <div class="thumbnail">
                     <a href="https://medium.com/@mntzr/3-best-books-to-read-if-you-feel-lost-5799ef83622e" target="_blank" rel="noopener noreferrer">
-                      <img src="{{url_for('static', path='img/contact-bg.jpg')}}" alt="Lights" >
+                      <img src="{{https_url_for(request,'static', path='img/contact-bg.jpg')}}" alt="Lights" >
                       <div class="caption">
                         <p><span>3 best books to read if you feel lost</span> <span><a href="https://medium.com/@mntzr/3-best-books-to-read-if-you-feel-lost-5799ef83622e" target="_blank" rel="noopener noreferrer">We are in the era of technology and innovation. Nowadays, the yesterday’s science fiction imaginations are today’s realities through the technology of artificial intelligence.</a></span></p>
                       </div>
@@ -61,7 +61,7 @@
                 <div class="row-md-4 row-12">
                   <div class="thumbnail">
                     <a href="https://medium.com/@mntzr/top-three-ways-to-learn-effectively-416afd9fee87" target="_blank" rel="noopener noreferrer">
-                      <img src="{{url_for('static', path='img/home-bg.jpg')}}" alt="Nature">
+                      <img src="{{https_url_for(request,'static', path='img/home-bg.jpg')}}" alt="Nature">
                       <div class="caption">
                         <p><span>Top three ways to learn effectively</span> <span><a href="https://medium.com/@mntzr/top-three-ways-to-learn-effectively-416afd9fee87" target="_blank" rel="noopener noreferrer">Nowadays, knowledge is everywhere, but we just need to organize it in order to be well acquainted. Without a proper planning and organization, we will be lost and confused all of sudden. Therefore, it is imperative to follow a well-planned pattern so that we should shine</a></span> </p>
                       </div>
@@ -71,7 +71,7 @@
                 <div class="row-md-4 row-12">
                   <div class="thumbnail">
                     <a href="https://medium.com/@mntzr/part-1-understand-the-root-causes-of-procrastination-b158fb8aa282" target="_blank" rel="noopener noreferrer">
-                      <img src="{{url_for('static', path='img/home-bg.jpg')}}" alt="Fjords">
+                      <img src="{{https_url_for(request,'static', path='img/home-bg.jpg')}}" alt="Fjords">
                       <div class="caption">
                         <p><span>Part 1: Understand the root causes of Procrastination</span> <span><a href="https://medium.com/@mntzr/part-1-understand-the-root-causes-of-procrastination-b158fb8aa282" target="_blank" rel="noopener noreferrer">After a long and exhaustive research, I come up with a clear understanding of root causes of procrastination. Hence, in order to fight something, it is important to have a good knowledge about it. Therefore, before giving you the tips to fight the procrastination, In this post, I want you to understand clearly the root causes of this scourge.</a></span></p>
                       </div>

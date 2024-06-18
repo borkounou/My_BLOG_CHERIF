@@ -4,7 +4,7 @@
 
 {%block content%}
 
-<header class="intro-header" style="background-image: url({{url_for('static', path='img/home-bg.jpg')}})">
+<header class="intro-header" style="background-image: url({{https_url_for(request,'static', path='img/home-bg.jpg')}})">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -48,7 +48,7 @@
                    
                         <div class="thumbnail">
                           <a href="https://univ-avignon.fr/" target="_blank" rel="noopener noreferrer">
-                            <img src="{{url_for('static', path='img/avignon_university_logo.jpeg')}}" alt="Lights" >
+                            <img src="{{https_url_for(request,'static', path='img/avignon_university_logo.jpeg')}}" alt="Lights" >
                             <div class="caption">
                               <p><span>Master of computer science-Artificial intelligence</span> <span><a href="https://univ-avignon.fr/" target="_blank" rel="noopener noreferrer">Avignon University, Avignon France</a></span></p>
                             </div>
@@ -58,7 +58,7 @@
                       <div class="row-md-4">
                         <div class="thumbnail">
                           <a href="https://www.christuniversity.in/" target="_blank" rel="noopener noreferrer">
-                            <img src="{{url_for('static', path='img/christ_university_logo.jpg')}}" alt="Nature">
+                            <img src="{{https_url_for(request,'static', path='img/christ_university_logo.jpg')}}" alt="Nature">
                             <div class="caption">
                               <p><span>Bsc in Computer Science Mathematics and Electronics(CME)</span> <span><a href="https://www.christuniversity.in/" target="_blank" rel="noopener noreferrer"> Christ University, Bangalore, India</a></span> </p>
                             </div>
@@ -67,8 +67,8 @@
                       </div>
                       <div class="row-md-4">
                         <div class="thumbnail">
-                          <a href="{{url_for('static', path='img/college_evangelique.JPG')}}" target="_blank" rel="noopener noreferrer">
-                            <img src="{{url_for('static', path='img/college_evangelique.JPG')}}" alt="Fjords">
+                          <a href="{{https_url_for(request,'static', path='img/college_evangelique.JPG')}}" target="_blank" rel="noopener noreferrer">
+                            <img src="{{https_url_for(request,'static', path='img/college_evangelique.JPG')}}" alt="Fjords">
                             <div class="caption">
                               <p><span>Baccalaureate of Mathematics physics and Chemistry</span> <span>Evangelical High School, Ndjamena, Chad</span></p>
                             </div>
