@@ -14,6 +14,12 @@ def https_url_for(request:Request, name:str, **path_params:any)->str:
     return https_url#request.url_for(name, **path_params)
 
 
+# def https_url_for(request:Request, name:str, **path_params:any)->str:
+#     http_url = request.url_for(name, **path_params)
+#     https_url =str(http_url).replace("http", "https", 1)
+#     return request.url_for(name, **path_params)
+
+
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
